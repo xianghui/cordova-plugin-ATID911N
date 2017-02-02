@@ -366,6 +366,9 @@ public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     Log.i(TAG, "RFID device initialized");
 }
 
+//Added by Lek Hsiang Hui
+//to ensure that the all lifecycle is properly handled like in the sample app
+//(specifically that the app destroy the reader object)
 @Override 
 public void onStart(){
     super.onStart();
@@ -411,6 +414,7 @@ public void onDestroy(){
 
     super.onDestroy();
 }
+//------------------------------------
 
 
 private void deinitalize(){
