@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+        id="simplicity-atid-barcode-rfid" version="0.1.0">
+    <name>Device</name>
+    <description>Cordova Device Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,device</keywords>
+    
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Rfid">
+                <param name="android-package" value="com.atid.app.myRfid.Rfid"/>
+            </feature>
+	        
+            <feature name="Barcode">
+                <param name="android-package" value="com.atid.app.mybarcode.Barcode"/>
+            </feature>
+
+            <feature name="Atid">
+                <param name="android-package" value="com.atid.app.atidgen.Atid"/>
+            </feature>
+
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
+
+
+        <js-module src="www/android/atid_rfid.js" name="atid">
+            <clobbers target="atid.rfid" />
+        </js-module>
+
+	    <js-module src="www/android/atid_barcode.js" name="atid-barcode">
+            <clobbers target="atid.barcode" />
+        </js-module>
+
+        <js-module src="www/android/atid.js" name="atid-params">
+            <clobbers target="atid.general" />
+        </js-module>
+
+        <source-file src="src/android/Rfid.java" target-dir="src/com/atid/app/myRfid" />
+	    <source-file src="src/android/Barcode.java" target-dir="src/com/atid/app/mybarcode" />
+        <source-file src="src/android/Atid.java" target-dir="src/com/atid/app/atidgen" />
+
+        <lib-file src="src/android/libs/atid.dev.barcode.jar" />
+	    <lib-file src="src/android/libs/atid.dev.rfid.jar" />
+        <lib-file src="src/android/libs/atid.system.comm.jar" />
+        <lib-file src="src/android/libs/atid.system.ctrl.jar" />
+        <lib-file src="src/android/libs/atid.system.device.jar" />
+        <lib-file src="src/android/libs/atid.util.jar" />
+
+        <source-file src="src/android/libs/build-extras.gradle" target-dir="src/.." />
+
+        <source-file src="src/android/libs/armeabi/libserial_port.so" target-dir="libs/armeabi" />
+        <source-file src="src/android/libs/armeabi/libsystem_control.so" target-dir="libs/armeabi" />
+
+        <resource-file src="src/android/res/raw/fail.wav" target="res/raw/fail.wav" />
+        <resource-file src="src/android/res/raw/success.wav" target="res/raw/success.wav" />
+	    <resource-file src="src/android/res/raw/beep.wav" target="res/raw/beep.wav" />
+
+
+    </platform>
+
+</plugin>
+
