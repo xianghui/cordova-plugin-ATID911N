@@ -19,6 +19,9 @@
     "cordova-android"
   ],
   "author": "Daniel Sledd",
+  "contributors": [{
+    "name" : "Lek Hsiang Hui"
+  }],
   "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/drealnn/cordova-plugin-ATID911N/issues"
